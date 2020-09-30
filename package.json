@@ -1,0 +1,21 @@
+{
+  "name": "tom.carrio.dev",
+  "version": "1.0.0",
+  "description": "Portfolio page for Tom Carrio",
+  "main": "index.js",
+  "dependencies": {
+    "sass": "^1.26.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "sass --watch assets/scss/index.scss assets/css/index.css",
+    "build-styles": "sass assets/scss/index.scss assets/css/index.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "    git@git.sr.ht:~tcarrio/tom.carrio.dev"
+  },
+  "author": "Tom Carrio <tom@carrio.dev>",
+  "license": "MIT"
+}

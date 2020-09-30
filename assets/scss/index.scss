@@ -1,0 +1,135 @@
+$code_font: monospace;
+
+$no_spacing: 0px;
+$sm_spacing: 4px;
+$md_spacing: 8px;
+$lg_spacing: 16px;
+$xl_spacing: 32px;
+
+$go_blue: #00acd7;
+$ts_blue: #3178c6;
+$py_blue: #3074a3;
+$py_yellow: #ffd356;
+$rb_red: #a91501;
+
+html > body {
+    margin: 0px;
+    min-height: 100vh;
+    background-color: lightslategray;
+}
+
+section {
+    padding: 32px;
+
+    & > p {
+        margin: 0px;
+    }
+}
+
+section#header {
+    // general display styling
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-direction: column;
+    background-color: darkslategray;
+
+    // font styling
+    font-family: $code_font;
+    font-size: 1.5em;
+    color: white;
+}
+
+section#introduction {
+    background-color: lightblue;
+
+    & > * {
+        margin-bottom: $md_spacing;
+        &:last-child {
+            margin-bottom: $no_spacing;
+        }
+    }
+
+}
+
+section#contributions {
+    background-color: rgb(42,42,42);
+    font-family: $code_font;
+    font-size: 1.5em;
+
+    & > p {
+        margin-bottom: $lg_spacing;
+        &:last-child {
+            margin-bottom: $no_spacing;
+        }
+
+        & > a {
+            color: white;
+            text-decoration: none;
+
+            & > * {
+                margin: 0px;
+            }
+            & > .org {
+                background-color: darkslategray;
+                padding: 0px 0px 0px 0.5em;
+            }
+            & > .project {
+                background-color: darkslategray;
+                padding: 0px 0.5em 0px 0px;
+            }
+            & > .lang {
+                background-color: darkslateblue;
+                padding: 0px 0.5em;
+
+                &.go {
+                    background-color: white;
+                    color: $go_blue;
+                    font-weight: bold;
+                }
+                &.ts {
+                    background-color: $ts_blue;
+                    color: white;
+                }
+                &.py {
+                    background-color: $py_blue;
+                    color: $py_yellow;
+                    font-weight: bold;
+                }
+                &.rb {
+                    background-color: $rb_red;
+                    color: white;
+                }
+                &.dk {
+                    background-color: #56baeb;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+
+            // description styling
+            & > .desc {
+                display: none;
+                padding: 0px 0.5em;
+
+                background-color: black;
+                color: lightgray;
+            }
+            &:hover  > .desc {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+section#technologies {
+    background-color: transparent;
+}
+
+
+@media screen and (max-width: 720px) {
+    /* some rules for mobile view here */
+    section#header {
+        background-color: darkslategray;
+    }
+}

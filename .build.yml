@@ -1,0 +1,29 @@
+image: archlinux
+packages:
+  - hugo
+  - nodejs
+  - npm
+sources:
+  - https://git.sr.ht/~tcarrio/tom.carrio.dev
+  - https://git.sr.ht/~tcarrio/build-helpers
+environment:
+  deploy_dir: ./public
+  project_dir: tom.carrio.dev
+secrets:
+  - f34d2d66-6293-4072-bead-7478eb611c60
+tasks:
+  - install_netlify: |
+      sudo npm i -g netlify-cli
+      netlify --telemetry-disable
+  - hugo_build: |
+      cd $project_dir
+      hugo -D
+  - deploy_netlify: |
+      source ./build-helpers/all.sh
+      cd $project_dir
+      if compare_branch master
+      then
+        netlify deploy -d $deploy_dir
+      else
+        netlify deploy -d $deploy_dir --prod
+      fi
