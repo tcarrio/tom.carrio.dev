@@ -8,7 +8,7 @@ sources:
   - https://git.sr.ht/~tcarrio/tom.carrio.dev
   - https://git.sr.ht/~tcarrio/build-helpers
 environment:
-  deploy_dir: ./public
+  deploy_dir: .
   project_dir: tom.carrio.dev
 secrets:
   - f34d2d66-6293-4072-bead-7478eb611c60
