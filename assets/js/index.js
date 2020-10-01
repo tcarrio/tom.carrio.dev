@@ -16,7 +16,9 @@ const interests = [
     "Python",
     "Agile",
     "Go",
-    "Micro-Services",
+    "TypeScript",
+    "Node.js",
+    "Microservices",
     "Automation",
     "Orchestration",
     "Backend",
@@ -24,11 +26,11 @@ const interests = [
     "Cloud",
     "DevOps",
     "Tinkering",
-    "Open Source",
+    "Open Source <3",
     "Linux",
     "Enabling Users",
     "Web Development",
-    "Mobile technologies",
+    "Mobile",
     "IT",
     "Administration",
     "Solutions Architecting",
@@ -120,6 +122,15 @@ class TextListScrambler {
 }
 
 window.onload = function () {
-    // new TextListScrambler(roles, document.querySelector("#roles")).next();
-    new TextListScrambler(interests, document.querySelector("#interests")).next();
+    setTimeout(() => {
+        // new TextListScrambler(roles, document.querySelector("#roles")).next();
+        
+        const maxLength = interests.reduce((max, interest) => Math.max(max, interest.length), 0);
+        const filledInterests = interests.map((interest) => {
+            const spaceStr = new Array(maxLength - interest.length).fill(0).map(() => " ").join("");
+            return interest + spaceStr;
+        });
+
+        new TextListScrambler(filledInterests, document.querySelector("#interests")).next();
+    }, 500);
 }

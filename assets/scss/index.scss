@@ -6,13 +6,24 @@ $md_spacing: 8px;
 $lg_spacing: 16px;
 $xl_spacing: 32px;
 
+$reg_max_width: 720px;
+
 $go_blue: #00acd7;
 $ts_blue: #3178c6;
 $py_blue: #3074a3;
 $py_yellow: #ffd356;
 $rb_red: #a91501;
 
-html > body {
+$gradient_tilt: 192deg;
+$gradient_tilt2: 172deg;
+$gradient_tilt3: 5deg;
+
+@mixin force-min-max-width {
+    max-width: $reg_max_width;
+    min-width: $reg_max_width;
+}
+
+html>body {
     margin: 0px;
     min-height: 100vh;
     background-color: lightslategray;
@@ -21,29 +32,115 @@ html > body {
 section {
     padding: 32px;
 
-    & > p {
+    &>p {
         margin: 0px;
     }
 }
 
 section#header {
     // general display styling
+
     display: flex;
     align-items: center;
-    justify-content: stretch;
-    flex-direction: column;
-    background-color: darkslategray;
+    justify-content: center;
+    flex-direction: row;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    background:
+        linear-gradient($gradient_tilt, rgba(47, 79, 79, 0.10), rgb(20, 20, 20)),
+        url('../images/packer_blur.jpg'),
+        rgb(20, 20, 20);
 
     // font styling
     font-family: $code_font;
     font-size: 1.5em;
     color: white;
+
+    // full screen styling
+    min-height: 100vh;
+
+    & #interests,
+    & .me {
+        font-weight: bold;
+    }
+
+    & #hello {
+        background-color: rgba(36, 59, 59, 0.5);
+        padding: $md_spacing;
+    }
+
+    & #user-icon > img {
+      width: 240px;
+      height: 240px;
+      border-radius: 120px;
+      margin-bottom: $xl_spacing;
+    }
+
+    & #contact-links {
+        margin-top: $xl_spacing;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        & > a {
+            display: block;
+            max-height: 2em;
+
+            margin-right: $lg_spacing;
+            &:last-child {
+                margin-right: 0px;
+            }
+
+            & > i {
+                font-size: 2em;
+            }
+        }
+    }
 }
 
-section#introduction {
-    background-color: lightblue;
+.feather {
+    width: 48px;
+    height: 48px;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
 
-    & > * {
+section#introduction {
+    background: linear-gradient($gradient_tilt2, rgb(20, 20, 20), rgba(35, 35, 42));
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: monospace;
+    font-size: 1.125em;
+
+    &::before {
+        content: '[guest@web ~] cat intro.txt';
+        
+        max-width: $reg_max_width;
+        width: 100%;
+        align-self: left;
+        
+        color: rgb(120, 180, 230);
+        font-weight: bold;
+    }
+
+    &>* {
+        max-width: $reg_max_width;
+
+        margin-top: $md_spacing;
         margin-bottom: $md_spacing;
         &:last-child {
             margin-bottom: $no_spacing;
@@ -53,32 +150,58 @@ section#introduction {
 }
 
 section#contributions {
-    background-color: rgb(42,42,42);
+    background-color: rgb(42, 42, 42);
     font-family: $code_font;
     font-size: 1.5em;
 
-    & > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &>.mono {
+        font-family: monospace;
+        color: white;
+    }
+
+    &>div {
+        @include force-min-max-width;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        
         margin-bottom: $lg_spacing;
         &:last-child {
             margin-bottom: $no_spacing;
         }
-
-        & > a {
+        
+        &>a {
             color: white;
             text-decoration: none;
 
-            & > * {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+            flex-wrap: wrap;
+
+            &>* {
                 margin: 0px;
+                flex: 0 0 auto;
             }
-            & > .org {
+
+            &>.org {
                 background-color: darkslategray;
                 padding: 0px 0px 0px 0.5em;
             }
-            & > .project {
+
+            &>.project {
                 background-color: darkslategray;
                 padding: 0px 0.5em 0px 0px;
             }
-            & > .lang {
+
+            &>.lang {
                 background-color: darkslateblue;
                 padding: 0px 0.5em;
 
@@ -87,19 +210,23 @@ section#contributions {
                     color: $go_blue;
                     font-weight: bold;
                 }
+
                 &.ts {
                     background-color: $ts_blue;
                     color: white;
                 }
+
                 &.py {
                     background-color: $py_blue;
                     color: $py_yellow;
                     font-weight: bold;
                 }
+
                 &.rb {
                     background-color: $rb_red;
                     color: white;
                 }
+
                 &.dk {
                     background-color: #56baeb;
                     color: white;
@@ -108,15 +235,24 @@ section#contributions {
             }
 
             // description styling
-            & > .desc {
+            &>.desc {
                 display: none;
                 padding: 0px 0.5em;
 
                 background-color: black;
                 color: lightgray;
+                flex: 1 1 auto;
+                min-width: $reg_max_width;
             }
-            &:hover  > .desc {
-                display: inline-block;
+
+            &:hover>.desc {
+                display: block;
+
+                &::before, &::after {
+                    content: "\00a0";
+                    font-size: 0.5em;
+                    display: block;
+                }
             }
         }
     }
@@ -124,10 +260,35 @@ section#contributions {
 
 section#technologies {
     background-color: transparent;
+    background: linear-gradient($gradient_tilt3, rgb(64, 69, 80), rgb(84, 106, 93));
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+
+    & > div {
+        @include force-min-max-width;
+
+        & .topic {
+            font-weight: bold;
+        }
+        & .entries {
+            font-style: italic;
+        }
+
+        &.title {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: $md_spacing;
+        }
+    }
 }
 
 
 @media screen and (max-width: 720px) {
+
     /* some rules for mobile view here */
     section#header {
         background-color: darkslategray;
