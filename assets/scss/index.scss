@@ -262,7 +262,7 @@ section#contributions {
                 min-width: $reg_max_width;
             }
 
-            &:hover>.desc {
+            &:hover>.desc, &>.desc.hovered {
                 display: block;
 
                 &::before,
@@ -351,6 +351,12 @@ section#technologies {
             max-width: $mob_max_width;
             min-width: $mob_max_width;
 
+            margin-bottom: $xl_spacing;
+
+            &:last-child {
+                margin-bottom: $no_spacing;
+            }
+
             &>a>div {
 
                 &.lang,
@@ -369,7 +375,7 @@ section#technologies {
 
                 &.expand {
                     display: block;
-                    background-color: darkslategray;
+                    margin-left: $sm_spacing;
 
                     .feather {
                         width: 1.15em;
