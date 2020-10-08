@@ -38,7 +38,7 @@ section {
     }
 }
 
-section#header {
+header {
     // general display styling
 
     display: flex;
@@ -310,7 +310,7 @@ section#technologies {
         font-size: 24px;
     }
 
-    section#header #contact-links {
+    header #contact-links {
         position: absolute;
         height: 96px;
         bottom: 96px;
