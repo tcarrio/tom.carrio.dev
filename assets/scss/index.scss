@@ -135,10 +135,10 @@ section#introduction {
     align-items: center;
 
     font-family: monospace;
-    font-size: 1.125em;
+    font-size: 1.225em;
 
     &::before {
-        content: '[guest@web ~] cat intro.txt';
+        content: '[guest@tom.carrio.dev ~] cat /tmp/web_intro.txt';
 
         max-width: $reg_max_width;
         width: 100%;
@@ -157,6 +157,11 @@ section#introduction {
         &:last-child {
             margin-bottom: $no_spacing;
         }
+    }
+
+    &>code {
+        font-weight: bold;
+        color: lightblue;
     }
 
 }
