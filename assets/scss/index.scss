@@ -208,6 +208,10 @@ section#introduction {
         &:last-child {
             margin-bottom: $no_spacing;
         }
+
+        &:first-child {
+            margin-top: 2em;
+        }
     }
 
     &>code {
