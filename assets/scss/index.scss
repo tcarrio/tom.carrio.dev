@@ -27,7 +27,7 @@ $gradient_tilt3: 5deg;
 html>body {
     margin: 0px;
     min-height: 100vh;
-    background-color: lightslategray;
+    background-color: rgb(6, 22, 22);
 }
 
 section {
@@ -35,6 +35,57 @@ section {
 
     &>p {
         margin: 0px;
+    }
+}
+
+footer {
+    min-height: calc((3 * 48px) + (2 * 16px) + 52px);
+    
+    *, &:hover, &:link, &:visited {
+        font-family: $code_font;
+        font-weight: bold;
+        color: rgb(84, 106, 93);
+    } 
+    
+    &>.footer-container {
+        max-width: 100%;
+
+        margin-top: 48px;
+        margin-bottom: 48px;
+        margin-left: 24px;
+        margin-right: 24px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: center;
+        flex-wrap: wrap;
+
+        & > .footer-row {
+            min-width: calc(100% - 96px);
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: center;
+
+            flex-grow: 1;
+
+            & > img {
+                height: 48px;
+                width: 48px;
+                margin-right: 12px;
+                flex-grow: 0;
+            }
+            
+            & > .row-message {
+                flex-grow: 1;
+            }
+
+            margin-bottom: 16px;
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
     }
 }
 
@@ -194,7 +245,7 @@ section#contributions {
             margin-bottom: $no_spacing;
         }
 
-        &>a {
+        &>a {            
             color: white;
             text-decoration: none;
 
@@ -207,6 +258,8 @@ section#contributions {
             &>* {
                 margin: 0px;
                 flex: 0 0 auto;
+
+                min-height: 3.5em;
             }
 
             &>.org {
@@ -224,8 +277,8 @@ section#contributions {
                 padding: 0px 0.5em;
 
                 &.go {
-                    background-color: white;
-                    color: $go_blue;
+                    background-color: $go_blue;
+                    color: white;
                     font-weight: bold;
                 }
 
@@ -259,7 +312,7 @@ section#contributions {
             // description styling
             &>.desc {
                 display: none;
-                padding: 0px 0.5em;
+                padding: 0px 1.5em;
 
                 background-color: black;
                 color: lightgray;
@@ -273,7 +326,7 @@ section#contributions {
                 &::before,
                 &::after {
                     content: "\00a0";
-                    font-size: 0.5em;
+                    font-size: 1.5em;
                     display: block;
                 }
             }

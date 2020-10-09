@@ -12,8 +12,6 @@ const roles = [
 const interests = [
     "Containers",
     "REST",
-    "Java EE",
-    "Python",
     "Agile",
     "Go",
     "TypeScript",
@@ -34,7 +32,13 @@ const interests = [
     "IT",
     "Administration",
     "Solutions Architecting",
-    "Security"
+    "Security",
+    "Monitoring",
+    "Observability",
+    "Reliability",
+    "Team Engagement",
+    "Change Velocity",
+    "Performant Code",
 ];
 
 function shuffleArray(array) {
