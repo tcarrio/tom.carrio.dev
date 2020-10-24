@@ -107,6 +107,7 @@ header {
     background: linear-gradient($gradient_tilt, rgba(47, 79, 79, 0.10), rgb(20, 20, 20)),
     url('../images/packer_blur.jpg'),
     rgb(20, 20, 20);
+    background-size: cover;
 
     // font styling
     font-family: $code_font;
