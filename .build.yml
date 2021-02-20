@@ -14,8 +14,8 @@ secrets:
   - f34d2d66-6293-4072-bead-7478eb611c60
 tasks:
   - install_netlify: |
-      sudo npm i -g netlify-cli
-      netlify --telemetry-disable
+      npm i netlify-cli
+      ./node_modules/.bin/netlify --telemetry-disable
   - sass_build: |
       cd $project_dir
       mkdir -p assets/css
@@ -25,7 +25,7 @@ tasks:
       cd $project_dir
       if compare_branch master
       then
-        netlify deploy -d $deploy_dir --prod
+        ../node_modules/.bin/netlify deploy -d $deploy_dir --prod
       else
-        netlify deploy -d $deploy_dir
+        ../node_modules/.bin/netlify deploy -d $deploy_dir
       fi
