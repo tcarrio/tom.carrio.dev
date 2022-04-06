@@ -8,6 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
+    "prebuild": "npm ci",
+    "build": "npm run build-styles",
     "dev": "sass --watch assets/scss/index.scss assets/css/index.css",
     "build-styles": "sass assets/scss/index.scss assets/css/index.css",
     "test": "echo \"Error: no test specified\" && exit 1"
